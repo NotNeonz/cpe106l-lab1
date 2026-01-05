@@ -5,8 +5,14 @@ student={
 }
 
 average=sum(student["grades"])/len(student["grades"])
-print("Average:", average)
 
-# Add grades
-student["grades"].append(75)
+
+# Show current student ID, updated grades & average
+print("ID:", student["id"])
+print("Student Name:", student["name"])
 print("Updated Grades:", student["grades"])
+print("Average:", average)
+print()
+
+# Change Grade
+ask_id=input("Enter student ID to update: ")
