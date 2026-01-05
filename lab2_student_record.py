@@ -9,7 +9,4 @@ print("Average:", average)
 
 # Add grades
 student["grades"].append(75)
-print("Updated Grades:", grades)
-
-# Update student information
-student["name"] =
+print("Updated Grades:", student["grades"])
