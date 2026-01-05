@@ -12,7 +12,14 @@ print("ID:", student["id"])
 print("Student Name:", student["name"])
 print("Updated Grades:", student["grades"])
 print("Average:", average)
+
+# Blank prints
 print()
 
-# Change Grade
+# Add Grade
 ask_id=input("Enter student ID to update: ")
+
+if ask_id==student["id"]:
+    updated_grade=int(input("Enter new grade for student: "))
+    student["grades"].append("updated_grade")
+    print(grades)
