@@ -16,10 +16,15 @@ print("Average:", average)
 # Blank prints
 print()
 
-# Add Grade
+# Add grade, and new average
 ask_id=input("Enter student ID to update: ")
 
 if ask_id==student["id"]:
     updated_grade=int(input("Enter new grade for student: "))
-    student["grades"].append("updated_grade")
-    print(grades)
+    student["grades"].append(updated_grade)
+    print("Updated Grade:",student["grades"])
+    average=sum(student["grades"])/len(student["grades"])
+    print("Updated average:",average)
+    
+else:
+    print("No student was found with the input ID")
