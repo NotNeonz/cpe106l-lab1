@@ -3,14 +3,14 @@ class BankAccount:
       self.owner=owner
       self.balance=balance
 
-def deposit(self, amount)
-self.balance +=amount
-
-def withdraw(self,amount)
-if amount <=self.balance:
-  self.balance-=amount
-else:
-  print("Insufficient balance")
+    def deposit(self, amount):
+        self.balance += amount
+    
+    def withdraw(self,amount):
+        if amount <=self.balance:
+            self.balance -= amount
+        else:
+            print("Insufficient balance")
 
 account=BankAccount("John",1000)
 account.deposit(500)
