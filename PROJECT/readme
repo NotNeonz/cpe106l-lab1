@@ -1,0 +1,132 @@
+1) What you need installed (one-time)
+A) Python
+
+Install Python 3.10–3.12 (recommended for Kivy/KivyMD compatibility).
+
+During install, check: ✅ Add Python to PATH
+
+Verify:
+
+python --version
+pip --version
+B) Git (optional but recommended)
+
+Install Git so you can git clone repos.
+
+Verify:
+
+git --version
+2) Get the project files
+Option A: If you got a ZIP
+
+Extract it
+
+Find the folder that contains main.py (in your case looks like Sprint03\main.py)
+
+Option B: If it’s on GitHub
+git clone <repo_url>
+cd <repo_folder>\Sprint03
+3) Create a virtual environment (VERY IMPORTANT)
+
+Go to the folder where main.py is:
+
+cd C:\path\to\project\Sprint03
+python -m venv venv
+
+Activate it:
+
+PowerShell
+.\venv\Scripts\Activate.ps1
+
+If PowerShell blocks it:
+
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+.\venv\Scripts\Activate.ps1
+CMD
+venv\Scripts\activate
+
+You should see (venv) in the terminal.
+
+4) Install required libraries
+
+Upgrade pip first:
+
+python -m pip install --upgrade pip setuptools wheel
+
+Install dependencies:
+
+pip install kivy kivymd mysql-connector-python
+
+If Kivy fails to install properly, use this (common Windows fix):
+
+pip install "kivy[base]"
+5) Make sure the folder structure is correct
+
+Inside Sprint03, you should have something like:
+
+main.py
+
+admin_screen.py, billing_screen.py, etc.
+
+database.py
+
+helpers.py
+
+instructionscrap.py
+
+Image\QELogo.jpg
+
+Image\GCashQR.jpg
+
+Image\1.jpg ... 10.jpg
+
+If images are missing, the app can still run, but you’ll see blank images / errors.
+
+6) Run the app
+
+From the same folder as main.py:
+
+python main.py
+7) Database setup (remote DB)
+
+Your app connects to a remote MySQL. If you see:
+
+Access denied for user ...
+then the credentials/permissions are wrong OR the DB host blocks your IP.
+
+What you can do:
+
+Check that database.py has the correct host/user/password/db/port
+
+If your database.py supports environment variables, set them before running, e.g.:
+
+PowerShell (temporary for that terminal)
+$env:DB_HOST="..."
+$env:DB_USER="..."
+$env:DB_PASSWORD="..."
+$env:DB_NAME="..."
+$env:DB_PORT="3306"
+python main.py
+
+(I’m not repeating any credentials here—treat DB passwords as secret.)
+
+8) Common problems + quick fixes
+A) “ModuleNotFoundError: kivy / kivymd / mysql”
+
+You forgot to activate venv, or installed outside venv.
+Fix:
+
+.\venv\Scripts\Activate.ps1
+pip install kivy kivymd mysql-connector-python
+B) App opens then crashes / UI doesn’t update
+
+Usually mismatch between code files being edited vs the one you’re running.
+Fix: make sure your terminal cd is inside the folder with the correct main.py.
+
+C) Kivy warnings about Image properties (allow_stretch, keep_ratio)
+
+Not fatal. It’s just warning that those properties are deprecated.
+
+D) Can’t connect to DB (1045 / access denied)
+
+Not a code bug; it’s credentials/permissions/host restriction.
